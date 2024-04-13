@@ -3,6 +3,7 @@
 #include <list>
 #include <functional> // std::ref
 #include <complex>
+#include <string>
 
 #include "catch2/catch_test_macros.hpp"
 
@@ -170,7 +171,7 @@ TEST_CASE ("Function template", "[function_template]") {
 }
 
 ////////////////////
-// Slide 20
+// Slide 21
 ////////////////////
 
 template <typename T, int SZ>
@@ -179,8 +180,14 @@ constexpr T* gen_array () {
 }
 
 TEST_CASE ("Non type template parm intro", "[non_type_template_parm_intro]") {
-auto* my_arr1 = gen_array<double, 20>();
-auto* my_arr2 = gen_array<std::string, 66>();
-auto* my_arr3 = gen_array<double, 44>();
+  auto* my_arr1 = gen_array<double, 20>();
+  REQUIRE (my_arr1 != nullptr);
+  delete [] my_arr1;
+  auto* my_arr2 = gen_array<std::string, 66>();
+  REQUIRE (my_arr2 != nullptr);
+  delete [] my_arr2;
+  auto* my_arr3 = gen_array<double, 44>();
+  REQUIRE (my_arr3 != nullptr);
+  delete [] my_arr3;
 }
 
