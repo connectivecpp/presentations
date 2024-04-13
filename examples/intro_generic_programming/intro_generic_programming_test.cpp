@@ -2,6 +2,7 @@
 #include <vector>
 #include <list>
 #include <functional> // std::ref
+#include <complex>
 
 #include "catch2/catch_test_macros.hpp"
 
@@ -92,6 +93,7 @@ TEST_CASE ("Function call operator overloading", "[function_call_overload]") {
 // Slide 16 
 ////////////////////
 
+namespace slide_16 { // namespace to distinguish functions with same name
 int add_div_by_3 (int a, int b) {
   return (a + b) / 3;
 }
@@ -99,8 +101,11 @@ int add_div_by_3 (int a, int b) {
 constexpr float add_div_by_3 (float a, float b) {
   return (a + b) / 3;
 }
+} // end namespace
 
 TEST_CASE ("Simple arithmetic function", "[simple_arithmetic_function]") {
+  using namespace slide_16;
+
   SECTION ("Call integer function") {
     int tmp {20}; 
     int result = add_div_by_3 (tmp, 30);
@@ -121,4 +126,61 @@ TEST_CASE ("Simple arithmetic function", "[simple_arithmetic_function]") {
 
 }
 
+
+////////////////////
+// Slide 17 and 18
+////////////////////
+
+namespace slide_17_18 {
+
+template <typename T>
+constexpr T pre_20_add_div_by_3 (T a, T b) {
+  return (a + b) / 3;
+}
+
+// in C++ 20, template syntax can be simplified (more on next slide)
+constexpr auto add_div_by_3 (auto a, auto b) {
+  return (a + b) / 3;
+}
+
+constexpr auto add_sub_div (auto a, auto b) {
+  return (a + b) / (a - b);
+}
+
+} // end namespace
+
+TEST_CASE ("Function template", "[function_template]") {
+  using namespace slide_17_18;
+
+  auto res1 = add_div_by_3 (20, 30); 
+  REQUIRE (res1 == 16);
+  auto res2 = add_div_by_3(20u, 30u);
+  REQUIRE (res2 == 16u);
+  auto res3 = add_div_by_3 (20.0, 30.0); 
+  REQUIRE (res3 > 16.0);
+  auto res4 = add_div_by_3(20.0f, 30.0f);
+  REQUIRE (res4 > 16.0f);
+
+  auto res5 = add_sub_div (15, 44);
+  REQUIRE (res5 == -2);
+  auto res6 = add_sub_div(3.3f, 22.1f);
+  REQUIRE (res6 < -1.0f);
+  auto res7 = add_sub_div(std::complex<double>{5.0, 2.0}, std::complex<double>{3.0, 4.0});
+
+}
+
+////////////////////
+// Slide 20
+////////////////////
+
+template <typename T, int SZ>
+constexpr T* gen_array () {
+  return new T[SZ];
+}
+
+TEST_CASE ("Non type template parm intro", "[non_type_template_parm_intro]") {
+auto* my_arr1 = gen_array<double, 20>();
+auto* my_arr2 = gen_array<std::string, 66>();
+auto* my_arr3 = gen_array<double, 44>();
+}
 
