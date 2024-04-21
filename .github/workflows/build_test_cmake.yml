@@ -24,6 +24,6 @@ jobs:
         run: mkdir build && cd build && cmake ../repo_code
       - name: build
         run: cd build && cmake --build .
-      = name: run-unit-test
+      - name: run-unit-test
       run: cd build && ctest
 
