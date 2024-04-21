@@ -26,5 +26,4 @@ jobs:
       - name: build
         run: cd build && cmake --build .
       - name: run-unit-test
-      run: cd build && ctest
-
+        run: cd build && ctest
