@@ -1,0 +1,29 @@
+
+name: CMake build and run test matrix
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  build_matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          path: repo_code
+      - name: configure-cmake
+        run: mkdir build && cd build && cmake ../repo_code
+      - name: build
+        run: cd build && cmake --build .
+      = name: run-unit-test
+      run: cd build && ctest
+
