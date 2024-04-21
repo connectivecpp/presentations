@@ -22,7 +22,7 @@ jobs:
         with:
           path: main
       - name: configure-cmake
-        run: mkdir build && cd build && cmake ../repo_code
+        run: mkdir build && cd build && cmake ../main
       - name: build
         run: cd build && cmake --build .
       - name: run-unit-test
