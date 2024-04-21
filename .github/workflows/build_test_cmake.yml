@@ -20,7 +20,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
         with:
-          path: repo_code
+          path: main
       - name: configure-cmake
         run: mkdir build && cd build && cmake ../repo_code
       - name: build
