@@ -1,4 +1,4 @@
-
+# Build, run unit tests
 name: CMake build and run test matrix
 
 on:
@@ -12,9 +12,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash
+#    defaults:
+#      run:
+#        shell: bash
     steps:
       - name: checkout
         uses: actions/checkout@v4
