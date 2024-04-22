@@ -22,7 +22,7 @@ jobs:
         with:
           path: main
       - name: configure-cmake
-        run: mkdir build && cd build && cmake ../main
+        run: mkdir build && cd build && cmake ../main/examples/intro_generic_programming
       - name: build
         run: cd build && cmake --build .
       - name: run-unit-test
