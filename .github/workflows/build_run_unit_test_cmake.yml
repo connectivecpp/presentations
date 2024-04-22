@@ -26,7 +26,7 @@ jobs:
       - name: create-build-dir
         run: cmake -E make_directory ${{github.workspace}}/build
       - name: configure-cmake
-        run: cmake ${{github.workspace}}/build ../main/examples/intro_generic_programming
+        run: cmake ${{github.workspace}}/build examples/intro_generic_programming
       - name: build
         run: cd build && cmake --build .
       - name: run-unit-test
