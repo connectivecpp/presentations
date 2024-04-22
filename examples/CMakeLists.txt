@@ -13,6 +13,7 @@ cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 # create project
 project(presentation_examples)
 
+enable_testing()
 add_subdirectory(intro_generic_programming)
 
 

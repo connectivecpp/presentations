@@ -1,6 +1,6 @@
 # Example Code for Presentations
 
-[GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml)
 
 This directory contains example source code from the presentations in the [presentations](<../presentations>) directory.
 
