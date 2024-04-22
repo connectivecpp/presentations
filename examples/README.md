@@ -1,5 +1,7 @@
 # Example Code for Presentations
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/:user/:repo/:workflow)
+
 This directory contains example source code from the presentations in the [presentations](<../presentations>) directory.
 
 All of the example source code has [Catch2](<https://github.com/catchorg/Catch2>) unit test code. The Catch2 unit test presentation (of course) features the unit test code. Each directory corresponding to a presentation has a top level CMake file.
