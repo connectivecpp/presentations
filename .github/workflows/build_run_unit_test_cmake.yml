@@ -6,7 +6,7 @@ on:
     branches:
       - main
       - develop
-end:
+env:
   BUILD_TYPE: Release
 jobs:
   build_matrix:
