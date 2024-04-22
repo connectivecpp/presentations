@@ -6,11 +6,14 @@ on:
     branches:
       - main
       - develop
+end:
+  BUILD_TYPE: Release
 jobs:
   build_matrix:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        # os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
 #    defaults:
 #      run:
@@ -20,8 +23,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: main
+      - name: create-build-dir
+        run: cmake -E make_directory ${{github.workspace}}/build
       - name: configure-cmake
-        run: mkdir build && cd build && cmake ../main/examples/intro_generic_programming
+        run: cmake ${{github.workspace}}/build ../main/examples/intro_generic_programming
       - name: build
         run: cd build && cmake --build .
       - name: run-unit-test
