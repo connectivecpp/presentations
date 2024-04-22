@@ -12,12 +12,12 @@ jobs:
   build_matrix:
     strategy:
       matrix:
-        # os: [ubuntu-latest, windows-latest]
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
+        # os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
-#    defaults:
-#      run:
-#        shell: bash
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
       - name: create-build-dir
         run: mkdir build
       - name: configure-cmake
-        run: cd build && cmake ../main/examples/intro_generic_programming -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_VERBOSE_MAKE_FILE:BOOL=ON
+        run: cd build && cmake ../main/examples/intro_generic_programming -DCMAKE_BUILD_TYPE=$BUILD_TYPE
       - name: build
         run: cd build && cmake --build . --config $BUILD_TYPE
       - name: run-unit-test
