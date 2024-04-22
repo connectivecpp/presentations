@@ -24,10 +24,10 @@ jobs:
         with:
           path: main
       - name: create-build-dir
-        run: cmake -E make_directory ${{github.workspace}}/build
+        run: mkdir build
       - name: configure-cmake
-        run: cmake ${{github.workspace}}/build examples/intro_generic_programming
+        run: cd build && cmake ../examples/intro_generic_programming -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_VERBOSE_MAKE_FILE:BOOL=ON
       - name: build
-        run: cd build && cmake --build .
+        run: cd build && cmake --build . --config $BUILD_TYPE
       - name: run-unit-test
-        run: cd build && ctest
+        run: cd build && ctest -c $BUILD_TYPE
