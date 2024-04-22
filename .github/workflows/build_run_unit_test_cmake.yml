@@ -26,8 +26,8 @@ jobs:
       - name: create-build-dir
         run: mkdir build
       - name: configure-cmake
-        run: cd build && cmake ../main/examples/intro_generic_programming -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cd build && cmake ../main/examples/intro_generic_programming
       - name: build
         run: cd build && cmake --build . --config $BUILD_TYPE
       - name: run-unit-test
-        run: cd build && ctest -c $BUILD_TYPE
+        run: cd build && ctest -C $BUILD_TYPE
