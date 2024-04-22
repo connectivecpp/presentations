@@ -1,5 +1,5 @@
 # Build, run unit tests
-name: CMake build and run test matrix
+name: CMake build and run unit test matrix
 
 on:
   push:
@@ -10,8 +10,7 @@ jobs:
   build_matrix:
     strategy:
       matrix:
-        #        os: [ubuntu-latest, windows-latest]
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
 #    defaults:
 #      run:
