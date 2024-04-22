@@ -1,6 +1,7 @@
 # Example Code for Presentations
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml)
+GH Actions build and unit test run for _main_ branch: ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=main)
+GH Actions build and unit test run for _develop_ branch: ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=develop)
 
 This directory contains example source code from the presentations in the [presentations](<../presentations>) directory.
 
@@ -11,5 +12,4 @@ Each CMake file will download and build the Catch2 library as appropriate using 
 All of the example code builds and successfully runs (as unit tests) on Ubuntu (Linux), Windows, and macOS, using GitHub Actions (continuous integration). Specifically, `ubuntu-latest`, `windows-latest`, and `macos-latest` are the target runners specified in the build matrix in the workflow YAML file.
 
 All of the CMake files have C++ 20 set as the required C++ standard, but portions of the code can be extracted for use with older C++ standards.
-
 
