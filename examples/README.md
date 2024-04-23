@@ -1,8 +1,8 @@
 # Example Code for Presentations
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=main&label=GitHub%20Actions%20build%20and%20unit%20tests%20on%20main)
+![GH Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=main&label=GH%20Actions%20build,%20unit%20tests%20on%20main)
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=develop&label=GitHub%20Actions%20build%20and%20unit%20tests%20on%20develop)
+![GH Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=develop&label=GH%20Actions%20build,%20unit%20tests%20on%20develop)
 
 This directory contains example source code from the presentations in the [presentations](<../presentations>) directory.
 
@@ -12,5 +12,5 @@ Each CMake file will download and build the Catch2 library as appropriate using 
 
 All of the example code builds and successfully runs (as unit tests) on Ubuntu (Linux), Windows, and macOS, using GitHub Actions (continuous integration). Specifically, `ubuntu-latest`, `windows-latest`, and `macos-latest` are the target runners specified in the build matrix in the workflow YAML file.
 
-All of the CMake files have C++ 20 set as the required C++ standard, but portions of the code can be extracted for use with older C++ standards.
+All of the CMake files have C++ 20 set as the required C++ standard, but only small portions require C++ 20, so most of the code can be used with older C++ standards.
 

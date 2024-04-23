@@ -8,12 +8,14 @@
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE.txt or copy at https://www.boost.org/LICENSE_1_0.txt)
 
-cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+cmake_minimum_required ( VERSION 3.14 FATAL_ERROR )
 
 # create project
-project(presentation_examples)
+project ( presentation_examples )
 
 enable_testing()
-add_subdirectory(intro_generic_programming)
+add_subdirectory ( intro_generic_programming )
+add_subdirectory ( unit_test_with_catch2 )
+add_subdirectory ( std_span )
 
 
