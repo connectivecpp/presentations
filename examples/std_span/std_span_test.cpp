@@ -39,7 +39,7 @@ TEST_CASE ("Spans with both dynamic and static extents", "[basic_usage]") {
 
 TEST_CASE ("Calling sum3, ensuring 3 contiguous elements", "[sum3]") {
   std::vector<int> vec { 10, 11, 12 };
-  REQUIRE (sum3(std::span<int, 3>(vec.begin(), 3)) == 33);
+  REQUIRE (sum3(std::span<int, 3>(vec.begin(), (vec.begin() + 3))) == 33);
   std::array<int, 3> arr { 10, 11, 12 };
   REQUIRE (sum3(arr) == 33);
   int c_arr[3] = { 10, 11, 12 };
