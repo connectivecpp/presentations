@@ -16,9 +16,10 @@ target_compile_features ( intro_generic_programming_test PRIVATE cxx_std_20 )
 include ( ../../cmake/download_cpm.cmake )
 
 CPMAddPackage ( "gh:catchorg/Catch2@3.5.4" )
+CPMAddPackage ( "gh:TimQuelch/decimal#1.0.0" )
 
 # link dependencies
-target_link_libraries ( intro_generic_programming_test PRIVATE Catch2::Catch2WithMain )
+target_link_libraries ( intro_generic_programming_test PRIVATE decimal Catch2::Catch2WithMain )
 
 enable_testing()
 
