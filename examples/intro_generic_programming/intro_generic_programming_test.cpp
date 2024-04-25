@@ -11,6 +11,8 @@
 #include <complex>
 #include <string>
 
+#include "decimal.h" // library providing decimal point functionality
+
 #include "catch2/catch_test_macros.hpp"
 
 ////////////////////
@@ -197,5 +199,24 @@ TEST_CASE ("Non type template parm intro", "[non_type_template_parm_intro]") {
   delete [] my_arr3;
 }
 
+////////////////////
+// Slide 21
+////////////////////
 
+
+TEST_CASE ("Third party number type", "[third_party_num_type]") {
+  using namespace slide_17_18; // same function template
+
+  auto a1 = decimal::decimal<2>{7.55};
+  auto b1 = decimal::decimal<2>{14.44};
+
+  auto res1 = add_div_by_3 (a1, b1);
+  REQUIRE (res1 == decimal::decimal<2>{7.33});
+
+  auto a2 = decimal::decimal<3>{5.111};
+  auto b2 = decimal::decimal<3>{19.222};
+
+  auto res2 = add_div_by_3 (a2, b2);
+  REQUIRE (res2 == decimal::decimal<3>{8.111});
+}
 
