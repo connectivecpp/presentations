@@ -14,3 +14,17 @@ All of the example code builds and successfully runs (as unit tests) on Ubuntu (
 
 All of the CMake files have C++ 20 set as the required C++ standard, but only small portions require C++ 20, so most of the code can be used with older C++ standards.
 
+The `intro_generic_programming` example uses a third party `decimal` library from [Tim Quelch](<https://github.com/TimQuelch/decimal>). The CMake configure step requires the `decimal` test code to be bypassed in the build (it uses an older version of Catch2).
+
+The CMake commands are:
+
+># clone presentations repository, create a build directory in parallel to the presentations directory
+># ("out of source" builds), change into build directory
+>cmake -D DECIMAL_ENABLE_TESTING:BOOL=OFF ../presentations/examples
+>cmake --build .
+>ctest
+>
+># for additional test output, each test can be invoked individually, e.g.:
+>std_span/std_span_test -s
+
+>
