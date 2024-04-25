@@ -9,5 +9,5 @@ Cliff Green has the following presentations, made for either the [New Mexico C++
 - [Create Your Own Open Source Project](https://github.com/connectivecpp/presentations/blob/main/presentations/CreateYourOwnOpenSourceProject.pdf)
 - [std::span in C++](https://github.com/connectivecpp/presentations/blob/main/presentations/StdSpanInC%2B%2B.pdf)
 
-Currently (April 2024) the example code is being updated, including CMake files. All of the example code has unit tests, using the Catch2 testing library. The [README](examples/README.md) file in the `examples` directory has additional information.
+As of late April 2024 the example code for all presentations (other than "Create Your Own Open Source Project") is present, as well as corresponding CMake files. The bulk of the presentation example code has unit tests, using the Catch2 unit testing library. The CMake files will download any needed dependencies (primarily Catch2), or optionally will work with dependency managers such as vcpkg or Conan. The [README](examples/README.md) file in the `examples` directory has additional information, including basic instructions on invoking CMake.
 
