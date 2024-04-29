@@ -11,6 +11,7 @@
 #include <complex>
 #include <string>
 #include <type_traits>
+#include <tuple>
 
 #include "decimal.h" // library providing decimal point functionality
 
@@ -360,9 +361,9 @@ TEST_CASE ("Traverse function", "[traverse]") {
   }
 
   SECTION ("Using add_x function object") {
-    traverse(v, add_x(42));
+    traverse(v, add_x{42});
     REQUIRE_THAT(v, Catch::Matchers::RangeEquals(std::vector<int>{43, 46, 49, 52}));
-    traverse(lst, add_x(11));
+    traverse(lst, add_x{11});
     REQUIRE_THAT(lst, Catch::Matchers::RangeEquals(std::vector<int>{13, 16, 19, 22}));
   }
 
@@ -380,4 +381,75 @@ TEST_CASE ("Traverse function", "[traverse]") {
   }
 }
 
+
+////////////////////
+// Slides 36 thru 38
+////////////////////
+
+struct person {
+  std::string name;
+  unsigned int age;
+};
+
+bool other_alg(auto f, person a, person b) {
+  return f(a, b);
+}
+
+TEST_CASE ("Lambda, closure", "[lambda_closure]") {
+
+  std::vector<person> v { { "Cliff", 35u }, { "Lou", 77u }, { "Nathan", 23u } };
+  std::sort(v.begin(), v.end(), // let's sort by age
+            [] (auto a, auto b) { return a.age < b.age; } );
+  REQUIRE (v[0].age == 23u);
+
+  std::sort(v.begin(), v.end(), // now sort by name
+            [] (auto a, auto b) { return a.name < b.name; } );
+  REQUIRE (v[0].name == std::string("Cliff"));
+
+  int cnt { 0 };
+  std::sort(v.begin(), v.end(), // sort by name, but also count comparisons
+            [&cnt] (auto a, auto b) { ++cnt; return a.name < b.name; } );
+  REQUIRE (cnt > 0);
+
+  auto lam = [] (auto a, auto b) { return a.age < b.age; };
+  std::sort(v.begin(), v.end(), lam); // sort by age
+  REQUIRE (v[0].age == 23u);
+
+  REQUIRE (other_alg(lam, person {"Bozo", 42}, person {"Checkers", 100}));
+  REQUIRE (!other_alg(lam, person {"Paul", 28}, person {"Irulan", 27}));
+
+}
+
+////////////////////
+// Slides 40, 41
+////////////////////
+
+template <typename T1, typename T2>
+struct two_items {
+  T1 first;
+  T2 second;
+};
+
+TEST_CASE ("Pair, typle", "[pair_tuple]") {
+  using person = two_items<std::string, unsigned int>;
+  person cliff { "Cliff", 36u };
+  person lou { "Lou", 66u };
+  REQUIRE (cliff.first == std::string("Cliff"));
+  REQUIRE (cliff.second == 36u);
+
+  lou.second += 1u; // Lou just aged a year
+  REQUIRE (lou.second == 67u);
+
+  std::tuple<int, std::string, double> foo1 { 42, "Howdy!", 44.0 };
+  auto foo2 = std::make_tuple(42, std::string{"Howdy!"}, 44.0);
+
+  REQUIRE (std::get<int>(foo1) == std::get<int>(foo2));
+  REQUIRE (std::get<std::string>(foo1) == std::get<std::string>(foo2));
+  REQUIRE (std::get<double>(foo1) == std::get<double>(foo2));
+
+  REQUIRE (std::get<0>(foo1) ==42);
+  REQUIRE (std::get<1>(foo1) == std::string("Howdy!"));
+  REQUIRE (std::get<2>(foo1) == 44.0);
+
+}
 
