@@ -7,11 +7,13 @@
 #include <algorithm>
 #include <vector>
 #include <list>
+#include <array>
 #include <functional> // std::ref
 #include <complex>
 #include <string>
 #include <type_traits>
 #include <tuple>
+#include <optional>
 
 #include "decimal.h" // library providing decimal point functionality
 
@@ -453,3 +455,73 @@ TEST_CASE ("Pair, typle", "[pair_tuple]") {
 
 }
 
+////////////////////
+// Slides 42, 43
+////////////////////
+
+template <typename T>
+class my_opt {
+  T val;
+  bool is_present;
+public:
+  my_opt() : val(), is_present(false) { }
+  my_opt(const T& v) : val(v), is_present(true) { }
+  T& operator*() { return val; }
+  const T& operator*() const { return val; }
+  T* operator->() { return &val; }
+  const T* operator->() const { return &val; }
+  operator bool() const { return is_present; }
+  // ...
+};
+
+using my_opt_str = my_opt<std::string>;
+my_opt_str my_func (bool return_value) {
+  return return_value ? my_opt_str("Howdy!") : my_opt_str();
+}
+
+using std_opt_str = std::optional<std::string>;
+std_opt_str std_opt_func (bool return_value) {
+  return return_value ? std_opt_str("Howdy!") : std_opt_str();
+}
+
+TEST_CASE ("Optional type", "[optional_type]") {
+  auto a = my_func(true);
+  REQUIRE (a);
+  REQUIRE (*a == std::string("Howdy!"));
+  auto b = my_func(false);
+  REQUIRE (!b);
+
+  auto c = std_opt_func(true);
+  REQUIRE (c);
+  REQUIRE (*c == std::string("Howdy!"));
+  auto d = std_opt_func(false);
+  REQUIRE (!d);
+}
+
+////////////////////
+// Slides 44, 45
+////////////////////
+
+template <double Percentage>
+constexpr double my_calc (double val) {
+    return val * Percentage;
+}
+
+TEST_CASE ("Non-type template parm", "[non-type-template-parm]") {
+  std::array<int, 4> my_array { 46, 20, 44, 77 };
+  std::sort(my_array.begin(), my_array.end());
+  REQUIRE_THAT(my_array, Catch::Matchers::RangeEquals(std::vector<int>{ 20, 44, 46, 77 }));
+
+  for (auto& i : my_array) {
+    ++i;
+  }
+  REQUIRE_THAT(my_array, Catch::Matchers::RangeEquals(std::vector<int>{ 21, 45, 47, 78 }));
+  my_array[2] = 10; // access 3rd element of array, same syntax as built-in arrays
+  REQUIRE_THAT(my_array, Catch::Matchers::RangeEquals(std::vector<int>{ 21, 45, 10, 78 }));
+
+  REQUIRE (my_calc<0.10> (100.0) == 10.0);
+  double x { 300.0 };
+  REQUIRE (my_calc<0.50> (x) == 150.0);
+  REQUIRE (my_calc<0.90> (100.0) == 90.0);
+
+}
