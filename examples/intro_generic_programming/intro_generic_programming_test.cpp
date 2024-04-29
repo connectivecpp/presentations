@@ -502,10 +502,13 @@ TEST_CASE ("Optional type", "[optional_type]") {
 // Slides 44, 45
 ////////////////////
 
+// double as non-type template parm not yet supported on Apple Clang
+/*
 template <double Percentage>
 constexpr double my_calc (double val) {
     return val * Percentage;
 }
+*/
 
 TEST_CASE ("Non-type template parm", "[non-type-template-parm]") {
   std::array<int, 4> my_array { 46, 20, 44, 77 };
@@ -519,9 +522,12 @@ TEST_CASE ("Non-type template parm", "[non-type-template-parm]") {
   my_array[2] = 10; // access 3rd element of array, same syntax as built-in arrays
   REQUIRE_THAT(my_array, Catch::Matchers::RangeEquals(std::vector<int>{ 21, 45, 10, 78 }));
 
+  // note yet supported by Apple Clang
+  /*
   REQUIRE (my_calc<0.10> (100.0) == 10.0);
   double x { 300.0 };
   REQUIRE (my_calc<0.50> (x) == 150.0);
   REQUIRE (my_calc<0.90> (100.0) == 90.0);
+  */
 
 }
