@@ -10,10 +10,13 @@
 #include <functional> // std::ref
 #include <complex>
 #include <string>
+#include <type_traits>
 
 #include "decimal.h" // library providing decimal point functionality
 
 #include "catch2/catch_test_macros.hpp"
+#include "catch2/matchers/catch_matchers.hpp"
+#include "catch2/matchers/catch_matchers_range_equals.hpp"
 
 ////////////////////
 // Slide 7
@@ -200,11 +203,10 @@ TEST_CASE ("Non type template parm intro", "[non_type_template_parm_intro]") {
 }
 
 ////////////////////
-// Slide 21
+// Slide 24
 ////////////////////
 
-
-TEST_CASE ("Third party number type", "[third_party_num_type]") {
+TEST_CASE ("Decimal number type, third party", "[decimal_num_type]") {
   using namespace slide_17_18; // same function template
 
   auto a1 = decimal::decimal<2>{7.55};
@@ -219,4 +221,163 @@ TEST_CASE ("Third party number type", "[third_party_num_type]") {
   auto res2 = add_div_by_3 (a2, b2);
   REQUIRE (res2 == decimal::decimal<3>{8.111});
 }
+
+////////////////////
+// Slide 25
+////////////////////
+
+namespace slide_25 {
+  template <typename N1, typename N2>
+  constexpr N1 add_div_by_3 (N1 a, N2 b) {
+    return (a + b) / 3;
+  }
+}
+
+TEST_CASE ("Two template parameters, first specified as return type", "[two_temp_parms]") {
+  using namespace slide_25;
+  REQUIRE (add_div_by_3 (20, 30.0) == 16); // result is of type int
+  REQUIRE (add_div_by_3<double, float>(20, 31) == 17.0); // result is of type double
+							 //
+  auto a = decimal::decimal<3>{5.111};
+  auto b = decimal::decimal<3>{19.222};
+  REQUIRE (add_div_by_3 (a, b) == decimal::decimal<3>{8.111}); // both types are decimal<3>
+}
+
+////////////////////
+// Slide 26
+////////////////////
+namespace slide_26 {
+  template <typename N1, typename N2>
+  constexpr auto add_div_by_3 (N1 a, N2 b) -> decltype((a+b)/3) {
+    return (a + b) / 3;
+  }
+}
+
+TEST_CASE ("Two template parameters, deduced return type from decltype", "[deduced_return_type]") {
+  using namespace slide_26;
+
+  REQUIRE (add_div_by_3 (20, 31.0) == 17.0); // result is of type double!
+  REQUIRE (add_div_by_3<double, float>(20, 31) == 17.0); // result is also type double!
+							 //
+  auto a = decimal::decimal<3>{5.111};
+  auto b = decimal::decimal<3>{19.222};
+  REQUIRE (add_div_by_3 (a, b) == decimal::decimal<3>{8.111}); // both types are decimal<3>, as before
+}
+
+
+////////////////////
+// Slide 27
+////////////////////
+template <typename T>
+constexpr std::complex<T> some_complex_math(std::complex<T> a, T b) {
+  return a + b;
+}
+template <typename C, typename T>
+requires (std::is_same_v<C, std::complex<T>>)
+constexpr C similar_complex_math(C a, T b) {
+  return a + b;
+}
+
+TEST_CASE ("Function template with requires", "[requires]") {
+  std::complex<float> x {3.0f, 4.0f};
+  std::complex<float> res {8.0f, 4.0f};
+  REQUIRE (some_complex_math(x, 5.0f) == res);
+  REQUIRE (similar_complex_math(x, 5.0f) == res);
+}
+
+////////////////////
+// Slide 28
+////////////////////
+template <typename T>
+concept big_math_capable = std::is_copy_constructible_v<T> &&
+                           requires (T x) {
+  x + x;
+  x / x;
+};
+
+void math_func_1 (big_math_capable auto a) {
+  using namespace slide_26;
+  REQUIRE ( ((a+a) / 2) == a); // unit testing is also requiring equality comp
+}
+
+template <big_math_capable T>
+    T math_func_2(T a, T b) {
+  using namespace slide_26;
+
+  return add_div_by_3 (a, b);
+}
+
+TEST_CASE ("Concept, function templates using the concept", "[concept]") {
+  auto a = decimal::decimal<3>{5.111};
+  auto b = decimal::decimal<3>{19.222};
+  math_func_1(a);
+  REQUIRE (math_func_2(a, b) == decimal::decimal<3>{8.111});
+}
+
+
+////////////////////
+// Slides 31 thru 35
+////////////////////
+
+template <typename Ctr, typename F>
+void traverse(Ctr& container, F func) {
+  for (auto& elem : container) {
+    func(elem);
+  }
+}
+
+void square_val(int& x) {
+    x = x*x;
+}
+void incr_char(char& c) {
+    c += 1;;
+}
+
+struct add_x {
+  int x { 0 };
+  void operator() (int& elem) { elem += x; x += 1; }
+};
+
+struct cmp_cnt { // count number of comparisons
+  int cmp { 0 };
+  bool operator() (auto a, auto b) { ++cmp; return a < b; }
+};
+
+TEST_CASE ("Traverse function", "[traverse]") {
+  std::vector<int> v { 1, 3, 5, 7 };
+  std::list<int> lst { 2, 4, 6, 8 };
+  std::string str { "Howdy"};
+
+  SECTION ("Simple functions passed in to traverse") {
+    traverse(v, square_val);
+    REQUIRE_THAT(v, Catch::Matchers::RangeEquals(std::vector<int>{1, 9, 25, 49}));
+
+    traverse(lst, square_val);
+    REQUIRE_THAT(lst, Catch::Matchers::RangeEquals(std::vector<int>{4, 16, 36, 64}));
+
+    traverse(str, incr_char);
+    REQUIRE(str == std::string("Ipxez"));
+  }
+
+  SECTION ("Using add_x function object") {
+    traverse(v, add_x(42));
+    REQUIRE_THAT(v, Catch::Matchers::RangeEquals(std::vector<int>{43, 46, 49, 52}));
+    traverse(lst, add_x(11));
+    REQUIRE_THAT(lst, Catch::Matchers::RangeEquals(std::vector<int>{13, 16, 19, 22}));
+  }
+
+  SECTION ("Using cmp_cnt function object") {
+    std::vector<int> v1 { 3, 5, 1, 7, -4, 55, 44 };
+    std::vector<double> v2 { 26.0, -2.0, -1.4, 0.5, 8.0 };
+
+    std::sort(v1.begin(), v1.end(), cmp_cnt{});
+    REQUIRE_THAT(v1, Catch::Matchers::RangeEquals(std::vector<int>{-4, 1, 3, 5, 7, 44, 55}));
+    cmp_cnt cntr{};
+    std::sort(v2.begin(), v2.end(), std::ref(cntr));
+    REQUIRE_THAT(v2, Catch::Matchers::RangeEquals(std::vector<double>{-2.0, -1.4, 0.5, 8.0, 26.0}));
+    REQUIRE (cntr.cmp > 0);
+
+  }
+}
+
 
