@@ -19,15 +19,18 @@ The `intro_generic_programming` example uses a third party `decimal` library fro
 To build and run (all of) the example test programs:
 
 First clone the `presentations` repository, then create a build directory in parallel to the presentations directory (this is called "out of source" builds), then `cd` (change directory) into the build directory. The CMake commands:
->
->cmake -D DECIMAL_ENABLE_TESTING:BOOL=OFF ../presentations/examples
->
->cmake --build .
->
->ctest
->
+
+```
+cmake -D DECIMAL_ENABLE_TESTING:BOOL=OFF ../presentations/examples
+
+cmake --build .
+
+ctest
+```
 
 For additional test output, each test can be invoked individually, for example:
->
->std_span/std_span_test -s
->
+
+```
+std_span/std_span_test -s
+```
+
