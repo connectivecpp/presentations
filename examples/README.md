@@ -34,3 +34,5 @@ For additional test output, each test can be invoked individually, for example:
 std_span/std_span_test -s
 ```
 
+This is the [README](../docs/README.md) to access the generated documentation from the example code.
+
