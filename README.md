@@ -1,4 +1,4 @@
-### Presentations Repository Generated Documentation From Examples
+### Generated Documentation From Examples in Presentations Repository
 
 The generated documentation from the presentations example code is available [here](https://connectivecpp.github.io/presentations/).
 
