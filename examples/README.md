@@ -4,6 +4,8 @@
 
 ![GH Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=develop&label=GH%20Actions%20build,%20unit%20tests%20on%20develop)
 
+The generated Doxygen documentation for the example code is [here](https://connectivecpp.github.io/presentations/).
+
 This example source code is taken from the presentations in the [presentations](https://github.com/connectivecpp/presentations/blob/main/presentations/) directory. The example code is in the [examples](http://github.com/connectivecpp/presentations/blob/main/examples/) directory.
                                                                                                                            This README file serves as both a typical README as well as the main page of the generated Doxygen HTML.
 
@@ -36,6 +38,4 @@ std_span/std_span_test -s
 ```
 
 Currently [Doxygen](https://www.doxygen.nl/index.html) is used to extract and generate documentation from the example code. In the future, additional tools such as [Sphinx](https://www.sphinx-doc.org/) may be used. Sphinx provides a modern look and feel and additional capabilities to tie together tutorials and example code. Sphinx uses the [reStructuredText](https://docutils.sourceforge.io/rst.html) markup language.
-
-The generated documentation for the example code is [here](https://connectivecpp.github.io/presentations/).
 
