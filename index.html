@@ -74,6 +74,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2github_2workspace_2examples_2README"></a> <img src="https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=main&amp;label=GH%20Actions%20build,%20unit%20tests%20on%20main" alt="GH Actions Workflow Status" class="inline"/></p>
 <p><img src="https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=develop&amp;label=GH%20Actions%20build,%20unit%20tests%20on%20develop" alt="GH Actions Workflow Status" class="inline"/></p>
+<p>The generated Doxygen documentation for the example code is <a href="https://connectivecpp.github.io/presentations/">here</a>.</p>
 <p>This example source code is taken from the presentations in the <a href="https://github.com/connectivecpp/presentations/blob/main/presentations/">presentations</a> directory. The example code is in the <a href="http://github.com/connectivecpp/presentations/blob/main/examples/">examples</a> directory. This README file serves as both a typical README as well as the main page of the generated Doxygen HTML.</p>
 <p>All of the example source code has <a href="https://github.com/catchorg/Catch2">Catch2</a> unit test code. The Catch2 unit test presentation (of course) features the unit test code. Each directory corresponding to a presentation has a top level CMake file.</p>
 <p>Each CMake configure / generate will download and build the Catch2 library as appropriate using the <a href="https://github.com/cpm-cmake/CPM.cmake">CPM.cmake</a> dependency manager. If Catch2 (v3 or greater) is already installed using a different package manager (such as Conan or vcpkg), the <code>CPM_USE_LOCAL_PACKAGES</code> variable can be set which results in <code>find_package</code> being attempted. Note that v3 (or later) of Catch2 is required, which results in faster unit test build times (once the initial Catch2 library is compiled) due to Catch2 changing from a "header only" library to a library with compiled objects (in addition to the header files).</p>
@@ -89,8 +90,7 @@ $(function() {
 <div class="line">ctest</div>
 </div><!-- fragment --><p>For additional test output, each test can be invoked individually, for example:</p>
 <div class="fragment"><div class="line">std_span/std_span_test -s</div>
-</div><!-- fragment --><p>Currently <a href="https://www.doxygen.nl/index.html">Doxygen</a> is used to extract and generate documentation from the example code. In the future, additional tools such as <a href="https://www.sphinx-doc.org/">Sphinx</a> may be used. Sphinx provides a modern look and feel and additional capabilities to tie together tutorials and example code. Sphinx uses the <a href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> markup language.</p>
-<p>The generated documentation for the example code is <a href="https://connectivecpp.github.io/presentations/">here</a>. </p>
+</div><!-- fragment --><p>Currently <a href="https://www.doxygen.nl/index.html">Doxygen</a> is used to extract and generate documentation from the example code. In the future, additional tools such as <a href="https://www.sphinx-doc.org/">Sphinx</a> may be used. Sphinx provides a modern look and feel and additional capabilities to tie together tutorials and example code. Sphinx uses the <a href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> markup language. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
