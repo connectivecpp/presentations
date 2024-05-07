@@ -3,6 +3,15 @@
  * Example code from the "A Tasty Intro to Generic Programming in C++"
  * presentation.
  *
+ * This presentation gives a taste of how types and generic programming are used in C++.
+ *
+ * Types are fundamental to C++, and while not a "strictly" typed language, C++ strives
+ * to be as strongly typed as possible. Types are used in many ways.
+ *
+ * Templates are fundamental to the generic design capabilities of C++, whether as function
+ * templates or class templates.The capabilities of templates go beyond simple substitution
+ * of types.
+ *
  * @author Cliff Green
  *
  * @copyright (c) 2024 by Cliff Green

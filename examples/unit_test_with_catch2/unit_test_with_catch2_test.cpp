@@ -1,8 +1,19 @@
-// Copyright (c) 2024 by Cliff Green
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE.txt or copy at https://www.boost.org/LICENSE_1_0.txt)
-
+/** @file
+ *
+ * Example code from the "Unit Testing in C++ Using the Catch2 Library"
+ * presentation.
+ *
+ * This presentation gives an introduction to unit testing in C++ with the
+ * Catch2 library.
+ *
+ * @author Cliff Green
+ *
+ * @copyright (c) 2024 by Cliff Green
+ *
+ * Distributed under the Boost Software License, Version 1.0.
+ * (See accompanying file LICENSE.txt or copy at https://www.boost.org/LICENSE_1_0.txt)
+ *
+ */
 
 #include <cstdint>
 #include <cmath>
