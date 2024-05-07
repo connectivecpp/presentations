@@ -13,3 +13,4 @@ Lou Langholtz is the primary organizer of the [New Mexico C++ Programmers Meetup
 
 As of late April 2024 the example code for all of Cliff's presentations (other than "Create Your Own Open Source Project") is present, as well as corresponding CMake files. The bulk of the presentation example code has unit tests, using the Catch2 unit testing library. The CMake files will download any needed dependencies (primarily Catch2), or optionally will work with dependency managers such as vcpkg or Conan. The [README](examples/README.md) file in the `examples` directory has additional information, including basic instructions on invoking CMake.
 
+Documentation generation is enabled for this repository, using a GitHub Actions workflow. For more information, see the [README](examples/README.md) file in the `examples` directory.

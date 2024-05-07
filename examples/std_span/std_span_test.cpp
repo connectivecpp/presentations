@@ -1,8 +1,23 @@
-// Copyright (c) 2024 by Cliff Green
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE.txt or copy at https://www.boost.org/LICENSE_1_0.txt)
-
+/** @file
+ *
+ * Example code from the "std::span in C++" presentation.
+ *
+ * This presentation gives an overview of the @c std::span class template in the C++ 
+ * library. It is meant to be for both C++ programmers as well as non C++ programmers
+ * to give a short intro to the static compile time capabilities of the C++ language.
+ *
+ * @c std::span with it's non-type template parameter @c Extent shows a capability
+ * not present in many languages - the ability to specify info that is present only
+ * at compile time, and does not cost runtime space or time.
+ *
+ * @author Cliff Green
+ *
+ * @copyright (c) 2024 by Cliff Green
+ *
+ * Distributed under the Boost Software License, Version 1.0.
+ * (See accompanying file LICENSE.txt or copy at https://www.boost.org/LICENSE_1_0.txt)
+ *
+ */
 
 #include <span>
 #include <array>
