@@ -4,7 +4,7 @@
 
 ![GH Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=develop&label=GH%20Actions%20build,%20unit%20tests%20on%20develop)
 
-This example source code is taken from the presentations in the [presentations](https://github.com/connectivecpp/presentations/presentations/) directory. The example code is in the [examples](http://github.com/connectivecpp/presentations/examples/) directory.
+This example source code is taken from the presentations in the [presentations](https://github.com/connectivecpp/presentations/blob/main/presentations/) directory. The example code is in the [examples](http://github.com/connectivecpp/presentations/blob/main/examples/) directory.
                                                                                                                            This README file serves as both a typical README as well as the main page of the generated Doxygen HTML.
 
 All of the example source code has [Catch2](https://github.com/catchorg/Catch2) unit test code. The Catch2 unit test presentation (of course) features the unit test code. Each directory corresponding to a presentation has a top level CMake file.
