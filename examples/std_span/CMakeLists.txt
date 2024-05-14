@@ -6,7 +6,7 @@
 cmake_minimum_required ( VERSION 3.14 FATAL_ERROR )
 
 # create project
-project ( std_span CXX )
+project ( std_span LANGUAGES CXX )
 
 # add executable
 add_executable ( std_span_test std_span_test.cpp )

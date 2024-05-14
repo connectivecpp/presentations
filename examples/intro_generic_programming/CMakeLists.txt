@@ -6,7 +6,7 @@
 cmake_minimum_required ( VERSION 3.14 FATAL_ERROR )
 
 # create project
-project ( intro_generic_programming CXX )
+project ( intro_generic_programming LANGUAGES CXX )
 
 # add executable
 add_executable ( intro_generic_programming_test intro_generic_programming_test.cpp )

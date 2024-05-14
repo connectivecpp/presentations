@@ -6,7 +6,7 @@
 cmake_minimum_required ( VERSION 3.14 FATAL_ERROR )
 
 # create project
-project ( unit_test_with_catch2 CXX )
+project ( unit_test_with_catch2 LANGUAGES CXX )
 
 # add executable
 add_executable ( unit_test_with_catch2_test unit_test_with_catch2_test.cpp )
