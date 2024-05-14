@@ -4,6 +4,8 @@
 
 ![GH Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/build_run_unit_test_cmake.yml?branch=develop&label=GH%20Actions%20build,%20unit%20tests%20on%20develop)
 
+![GH Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/gen_docs.yml?branch=main&label=GH%20Actions%20generate%20docs)
+
 The generated Doxygen documentation for the example code is [here](https://connectivecpp.github.io/presentations/).
 
 This example source code is taken from the presentations in the [presentations](https://github.com/connectivecpp/presentations/blob/main/presentations/) directory. The example code is in the [examples](http://github.com/connectivecpp/presentations/blob/main/examples/) directory.
