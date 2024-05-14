@@ -1,6 +1,6 @@
 /** @file
  *
- * Example code from the "Unit Testing in C++ Using the Catch2 Library"
+ * @brief Example code from the "Unit Testing in C++ Using the Catch2 Library"
  * presentation.
  *
  * This presentation gives an introduction to unit testing in C++ with the

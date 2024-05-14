@@ -1,6 +1,6 @@
 /** @file
  *
- * Example code from the "A Tasty Intro to Generic Programming in C++"
+ * @brief Example code from the "A Tasty Intro to Generic Programming in C++"
  * presentation.
  *
  * This presentation gives a taste of how types and generic programming are used in C++.

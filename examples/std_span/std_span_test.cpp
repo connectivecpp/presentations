@@ -1,6 +1,6 @@
 /** @file
  *
- * Example code from the "std::span in C++" presentation.
+ * @brief Example code from the "std::span in C++" presentation.
  *
  * This presentation gives an overview of the @c std::span class template in the C++ 
  * library. It is meant to be for both C++ programmers as well as non C++ programmers
