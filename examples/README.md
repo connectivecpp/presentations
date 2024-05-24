@@ -6,6 +6,8 @@
 
 ![GH Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/connectivecpp/presentations/gen_docs.yml?branch=main&label=GH%20Actions%20generate%20docs)
 
+![GH Tag](https://img.shields.io/github/v/tag/connectivecpp/presentations?label=GH%20tag)
+
 The generated Doxygen documentation for the example code is [here](https://connectivecpp.github.io/presentations/).
 
 This example source code is taken from the presentations in the [presentations](https://github.com/connectivecpp/presentations/blob/main/presentations/) directory. The example code is in the [examples](http://github.com/connectivecpp/presentations/blob/main/examples/) directory.
