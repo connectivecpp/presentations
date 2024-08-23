@@ -15,7 +15,7 @@ target_compile_features ( unit_test_with_catch2_test PRIVATE cxx_std_20 )
 # add dependencies
 include ( ../../cmake/download_cpm.cmake )
 
-CPMAddPackage ( "gh:catchorg/Catch2@3.5.4" )
+CPMAddPackage ( "gh:catchorg/Catch2@3.7.0" )
 
 # link dependencies
 target_link_libraries ( unit_test_with_catch2_test PRIVATE Catch2::Catch2WithMain )
