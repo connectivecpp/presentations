@@ -15,7 +15,7 @@ target_compile_features ( intro_generic_programming_test PRIVATE cxx_std_20 )
 # add dependencies
 include ( ../../cmake/download_cpm.cmake )
 
-CPMAddPackage ( "gh:catchorg/Catch2@3.5.4" )
+CPMAddPackage ( "gh:catchorg/Catch2@3.7.0" )
 CPMAddPackage ( "gh:TimQuelch/decimal#1.0.0" )
 
 # link dependencies
