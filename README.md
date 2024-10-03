@@ -11,6 +11,7 @@ Cliff Green has the following presentations, made for either the [New Mexico C++
 
 - [A Tasty Intro to Generic Programming in C++](./presentations/ATastyIntroToGenericProgrammingInC%2B%2B.pdf)
 - [Unit Testing in C++ With the Catch2 Library](https://github.com/connectivecpp/presentations/blob/main/presentations/UnitTestingC%2B%2BWithCatch2.pdf)
+- [Unit Testing Requires](https://github.com/connectivecpp/presentations/blob/main/presentations/UnitTestingRequires.pdf)
 - [Create Your Own Open Source Project](https://github.com/connectivecpp/presentations/blob/main/presentations/CreateYourOwnOpenSourceProject.pdf)
 - [std::span in C++](https://github.com/connectivecpp/presentations/blob/main/presentations/StdSpanInC%2B%2B.pdf)
 
