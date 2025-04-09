@@ -1,4 +1,4 @@
-# Copyright (c) 2024 by Cliff Green
+# Copyright (c) 2024-2025 by Cliff Green
 #
 # This CMake file invokes all of the example code CMake files for
 # the presentations repository. Each subdirectory can be built
