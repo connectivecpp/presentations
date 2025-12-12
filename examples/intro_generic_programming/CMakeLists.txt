@@ -1,4 +1,4 @@
-# Copyright (c) 2024-2025 by Cliff Green
+# Copyright (c) 2024-2026 by Cliff Green
 #
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE.txt or copy at https://www.boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@ target_compile_features ( intro_generic_programming_test PRIVATE cxx_std_20 )
 # add dependencies
 include ( ../../cmake/download_cpm.cmake )
 
-CPMAddPackage ( "gh:catchorg/Catch2@3.8.0" )
+CPMAddPackage ( "gh:catchorg/Catch2@3.11.0" )
 CPMAddPackage ( "gh:TimQuelch/decimal#1.0.0" )
 
 # link dependencies
